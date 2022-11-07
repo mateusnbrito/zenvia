@@ -9,21 +9,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
   <script type="text/javascript" src="https://go.pardot.com/js/piUtils.js?ver=2021-09-20"></script>
-  <script type="text/javascript">
-    piAId = '844713';
-    piCId = '110366';
-    piHostname = 'pi.pardot.com';
-    if (!window['pi']) { window['pi'] = {}; } pi = window['pi']; if (!pi['tracker']) { pi['tracker'] = {}; } pi.tracker.pi_form = true;
-    (function () {
-      function async_load() {
-        var s = document.createElement('script'); s.type = 'text/javascript';
-        s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
-        var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
-      }
-      if (window.attachEvent) { window.attachEvent('onload', async_load); }
-      else { window.addEventListener('load', async_load, false); }
-    })();
-  </script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
 
@@ -180,15 +165,26 @@
       color: #1E1E1E;
     }
 
-    html body main section.first .h1-h2-and-form .form-wrapper .form .item .item-inner .form-field input,
-    html body main section.first .h1-h2-and-form .form-wrapper .form .item .item-inner .form-field textarea {
+    html body main section.first .h1-h2-and-form .form-wrapper .form .item .item-inner .form-field input {
       width: 100%;
       height: 2.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
       border: 0.1rem solid #DAD9D9;
       border-radius: 0.25rem;
+      font-size: 1.15rem;
+    }
+
+    html body main section.first .h1-h2-and-form .form-wrapper .form .item .item-inner .form-field textarea {
+      width: 100%;
+      height: 3.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+      border: 0.1rem solid #DAD9D9;
+      border-radius: 0.25rem;
+      font-size: 1.15rem;
     }
 
     html body main section.first .h1-h2-and-form .form-wrapper .form .button {
+      cursor: pointer;
       display: block;
       margin: 0 auto;
     }
@@ -209,6 +205,73 @@
       width: 1rem !important;
       height: 1rem !important;
       margin: 0rem 0.5rem 0rem 0rem;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin: 0rem 0rem 2rem 0rem;
+      padding: 1.25rem 1rem 1.25rem 1rem;
+      border-radius: 1rem;
+      box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
+      background-color: #FFFFFF;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .title {
+      margin: 0rem 0rem 1rem 0rem;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1E1E1E;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .input-wrapper {
+      width: 100%;
+      margin: 0rem 0rem 2rem 0rem;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .input-wrapper label {
+      display: block;
+      margin: 0rem 0rem 0.5rem 0rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1E1E1E;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .input-wrapper input {
+      width: 100%;
+      height: 2.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+      border: 0.1rem solid #DAD9D9;
+      border-radius: 0.25rem;
+      font-size: 1.15rem;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .button-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 0rem 0rem 2rem 0rem;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .button-wrapper .button {
+      margin: 0rem 1rem 0rem 0rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      background-color: #E0DEE0;
+      cursor: pointer;
+      color: #2B3356;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .button-wrapper .button:last-of-type {
+      margin: 0rem 0rem 0rem 0rem;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .text {
+      padding: 0rem 3rem 0rem 3rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-align: center;
     }
 
     html body main section.first .h1-h2-and-form h2 {
@@ -484,7 +547,7 @@
       html body main section.first .h1-h2-and-form .form-wrapper .title {
         margin: 0rem 0rem 1rem 0rem;
         text-transform: uppercase;
-        font-size: 0.85rem;
+        font-size: 1.15rem;
         font-weight: 800;
         color: #1E1E1E;
       }
@@ -660,7 +723,24 @@
         flex-direction: column;
       }
     }
+
+    /*# sourceMappingURL=style.css.map */
   </style>
+  <!-- <script type="text/javascript">
+    piAId = '844713';
+    piCId = '110366';
+    piHostname = 'pi.pardot.com';
+    if (!window['pi']) { window['pi'] = {}; } pi = window['pi']; if (!pi['tracker']) { pi['tracker'] = {}; } pi.tracker.pi_form = true;
+    (function () {
+      function async_load() {
+        var s = document.createElement('script'); s.type = 'text/javascript';
+        s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
+        var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+      }
+      if (window.attachEvent) { window.attachEvent('onload', async_load); }
+      else { window.addEventListener('load', async_load, false); }
+    })();
+  </script> -->
 </head>
 
 <body>
@@ -758,6 +838,18 @@
               </div>
             </div>
           </form>
+        </div>
+        <div class="form-result">
+          <span class="title">Gerador do Código</span>
+          <div class="input-wrapper">
+            <label class="field-label" for="link">Link gerado</label>
+            <input class="link" type="text" name="link">
+          </div>
+          <div class="button-wrapper">
+            <a class="button button-link" target="_blank">Copiar link</a>
+            <a class="button refresh" target="_blank">Gerar outro link</a>
+          </div>
+          <span class="text">Centralize todas as conversas em uma única plataforma!</span>
         </div>
         <h2 class="h2 mobile">
           Escolha a opção que melhor atende sua necessidade:
@@ -870,7 +962,7 @@
     <a class="button" href="https://www.zenvia.com/fale-conosco/" target="_blank">Fale conosco</a>
   </footer>
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     function insertAfter(el, referenceNode) {
       referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
     }
@@ -926,10 +1018,40 @@
     }
 
     //]]>
-  </script>
+  </script> -->
   <script>
+    let $form = document.querySelector("#pardot-form");
     let $options = document.querySelectorAll(".options .option");
     let $contents = document.querySelectorAll(".zenvia-solutions .content");
+    let $link = document.querySelector(".input-wrapper .link");
+    let $formResult = document.querySelector(".form-result");
+    let $formWrapper = document.querySelector(".form-wrapper");
+    let $buttonLink = document.querySelector(".button-link");
+    let $buttonRefresh = document.querySelector(".refresh");
+    let phone;
+    let text;
+    let url;
+
+    setTimeout(() => {
+      // $formResult.style.minWidth = `${$formWrapper.clientWidth}px`;
+      $formResult.style.height = `${$formWrapper.clientHeight}px`;
+    }, 1000);
+
+    const handlePhone = (event) => {
+      let input = event.target;
+
+      input.value = phoneMask(input.value);
+    }
+
+    const phoneMask = (value) => {
+      // if (!value) return "";
+
+      // value = value.replace(/\D/g, '');
+      // value = value.replace(/(\d{2})(\d)/, "($1) $2");
+      // value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+
+      return value
+    }
 
     $options.forEach(option => {
       option.addEventListener("click", () => {
@@ -948,6 +1070,35 @@
           $contents[0].classList.add("selected");
         }
       });
+    });
+
+    $form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      $formWrapper.style.display = "none";
+      $formResult.style.display = "flex";
+
+      aName = event.target[0].value;
+      phone = (event.target[1].value).replace(/\D/g, "");
+      email = event.target[2].value;
+      text = event.target[3].value;
+
+      url = `https://api.whatsapp.com/send?phone=55${phone}&text=${text}`;
+
+      $link.setAttribute("value", url);
+      $buttonLink.setAttribute("value", url);
+
+      setTimeout(() => {
+        $form.reset();
+      }, 1000);
+    });
+
+    $buttonLink.addEventListener("click", (event) => {
+      navigator.clipboard.writeText((event.target).getAttribute("value"));
+    });
+
+    $buttonRefresh.addEventListener("click", (event) => {
+      location.reload();
     });
   </script>
 </body>
