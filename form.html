@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZENVIA | Formulário</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      font-style: normal;
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 400;
+      background-size: cover;
+      text-decoration: none;
+      color: #3E3E3E;
+    }
+
+    .button {
+      padding: 0.5rem 3rem 0.5rem 3rem;
+      font-size: 1rem;
+      font-weight: 800;
+      border: none;
+      background-color: #1FAF38;
+      color: #FFFFFF;
+    }
+
+    .form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .form .item {
+      width: 100%;
+    }
+
+    .form .item .item-inner {
+      width: 100%;
+      margin: 0rem 0rem 1rem 0rem;
+    }
+
+    .form .item .item-inner .form-field {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form .item .item-inner .form-field label {
+      margin: 0rem 0rem 0.25rem 0rem;
+      font-weight: 700;
+      color: #1E1E1E;
+    }
+
+    .form .item .item-inner .form-field .description {
+      margin: 0.25rem 0rem 0.25rem 0rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #1E1E1E;
+    }
+
+    .form .item .item-inner .form-field input {
+      width: 100%;
+      height: 2.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+      border: 0.1rem solid #DAD9D9;
+      border-radius: 0.25rem;
+      font-size: 1.15rem;
+    }
+
+    .form .item .item-inner .form-field textarea {
+      width: 100%;
+      height: 3.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+      border: 0.1rem solid #DAD9D9;
+      border-radius: 0.25rem;
+      font-size: 1.15rem;
+    }
+
+    .form .button {
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .form .value {
+      display: flex;
+      align-items: center;
+      margin: 0rem 0rem 0.5rem 0rem;
+    }
+
+    .form .value label {
+      margin: 0rem 0rem 0rem 0rem !important;
+      font-size: 0.9rem;
+      font-weight: 500 !important;
+    }
+
+    .form .value input {
+      width: 1rem !important;
+      height: 1rem !important;
+      margin: 0rem 0.5rem 0rem 0rem;
+    }
+
+    .form-result {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin: 0rem 0rem 2rem 0rem;
+      padding: 1.25rem 1rem 1.25rem 1rem;
+      border-radius: 1rem;
+      box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
+      background-color: #FFFFFF;
+    }
+
+    .form-result .title {
+      margin: 0rem 0rem 1rem 0rem;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1E1E1E;
+    }
+
+    .form-result .input-wrapper {
+      width: 100%;
+      margin: 0rem 0rem 2rem 0rem;
+    }
+
+    .form-result .input-wrapper label {
+      display: block;
+      margin: 0rem 0rem 0.5rem 0rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1E1E1E;
+    }
+
+    .form-result .input-wrapper input {
+      width: 100%;
+      height: 2.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+      border: 0.1rem solid #DAD9D9;
+      border-radius: 0.25rem;
+      font-size: 1.15rem;
+    }
+
+    .form-result .button-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 0rem 0rem 2rem 0rem;
+    }
+
+    .form-result .button-wrapper .button {
+      margin: 0rem 1rem 0rem 0rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      background-color: #E0DEE0;
+      cursor: pointer;
+      color: #2B3356;
+    }
+
+    .form-result .button-wrapper .button:last-of-type {
+      margin: 0rem 0rem 0rem 0rem;
+    }
+
+    .form-result .text {
+      padding: 0rem 4rem 0rem 4rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* The snackbar - position it at the bottom and in the middle of the screen */
+    #snackbar {
+      visibility: hidden;
+      /* Hidden by default. Visible on click */
+      min-width: 250px;
+      /* Set a default minimum width */
+      margin-left: -125px;
+      /* Divide value of min-width by 2 */
+      background-color: #333;
+      /* Black background color */
+      color: #fff;
+      /* White text color */
+      text-align: center;
+      /* Centered text */
+      border-radius: 2px;
+      /* Rounded borders */
+      padding: 16px;
+      /* Padding */
+      position: fixed;
+      /* Sit on top of the screen */
+      z-index: 1;
+      /* Add a z-index if needed */
+      left: 50%;
+      /* Center the snackbar */
+      bottom: 30px;
+      /* 30px from the bottom */
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbar.show {
+      visibility: visible;
+      /* Show the snackbar */
+      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <form accept-charset="UTF-8" method="post" action="https://go.pardot.com/l/843713/2022-11-04/ph5n2f" class="form"
+    id="pardot-form">
+    <div class="item pd-text 843713_244116pi_843713_244116">
+      <div class="item-inner pd-text 843713_244116pi_843713_244116">
+        <div name="first_name" id="843713_244116pi_843713_244116" class="form-field first_name pd-text required">
+          <label class="field-label" for="843713_244116pi_843713_244116">Qual o seu nome?</label>
+          <input type="text" name="843713_244116pi_843713_244116" id="843713_244116pi_843713_244116" value=""
+            class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Seu nome" required />
+          <div id="error_for_843713_244116pi_843713_244116" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+    <div class="item pd-text 843713_244119pi_843713_244119">
+      <div class="item-inner pd-text 843713_244119pi_843713_244119">
+        <div name="phone" id="843713_244119pi_843713_244119" class="form-field phone pd-text required">
+          <label class="field-label" for="843713_244119pi_843713_244119">Qual o seu número de WhatsApp?</label>
+          <input type="tel" name="843713_244119pi_843713_244119" id="843713_244119pi_843713_244119 number" value=""
+            class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Seu número"
+            onkeyup="handlePhone(event)" inputmode="numeric" required />
+          <span class="description">Ex: 551190000000</span>
+          <div id="error_for_843713_244119pi_843713_244119" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+    <div class="item pd-text 843713_244125pi_843713_244125">
+      <div class="item-inner pd-text 843713_244125pi_843713_244125 ">
+        <div name="email" id="843713_244125pi_843713_244125" class="form-field email pd-text required">
+          <label class="field-label" for="843713_244125pi_843713_244125">Qual o seu e-mail?</label>
+          <input type="text" name="843713_244125pi_843713_244125" id="843713_244125pi_843713_244125" value=""
+            class="text" size="30" maxlength="255" onchange="" onfocus="" placeholder="Seu e-mail" required />
+          <div id="error_for_843713_244125pi_843713_244125" style="display:none"></div>
+        </div>
+      </div>
+      <div class="item pd-textarea 843713_244122pi_843713_244122">
+        <div class="item-inner pd-textarea 843713_244122pi_843713_244122">
+          <div name="Text_field" id="843713_244122pi_843713_244122" class="form-field Text_field pd-textarea">
+            <label class="field-label" for="843713_244122pi_843713_244122">Insira uma mensagem</label>
+            <textarea name="843713_244122pi_843713_244122" id="843713_244122pi_843713_244122" onchange="" cols="40"
+              rows="10" class="standard" placeholder="Sua mensagem"></textarea>
+            <span class="description">Campo opcional</span>
+            <div id="error_for_843713_244122pi_843713_244122" style="display:none"></div>
+          </div>
+        </div>
+        <div class="item pd-checkbox 843713_244242pi_843713_244242">
+          <div class="item-inner pd-checkbox 843713_244242pi_843713_244242">
+            <div name="opted_out" id="843713_244242pi_843713_244242" class="form-field opted_out pd-checkbox required">
+              <label class="field-label" for="843713_244242pi_843713_244242"></label>
+              <span class="value">
+                <input type="checkbox" name="843713_244242pi_843713_244242_1978971"
+                  id="843713_244242pi_843713_244242_1978971" value="1978971" onchange="" required />
+                <label class="inline" for="843713_244242pi_843713_244242_1978971">Aceito receber contato
+                  Zenvia</label>
+              </span>
+              <div id="error_for_843713_244242pi_843713_244242" style="display:none"></div>
+            </div>
+          </div>
+          <p style="position:absolute; width:190px; left:-9999px; top: -9999px;visibility:hidden;">
+            <label for="pi_extra_field">Comments</label>
+            <input type="text" name="pi_extra_field" id="pi_extra_field" />
+          </p>
+          <input name="_utf8" type="hidden" value="&#9731;" />
+          <p class="submit">
+            <input class="button" type="submit" accesskey="s" value="Gerar link" />
+          </p>
+          <input type="hidden" name="hiddenDependentFields" id="hiddenDependentFields" value="" />
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="form-result">
+    <div class="input-wrapper">
+      <label class="field-label" for="link">Link gerado</label>
+      <input class="link" type="text" name="link">
+    </div>
+    <div class="button-wrapper">
+      <button class="button button-link" target="_blank">Copiar link</button>
+      <button class="button refresh" target="_blank">Gerar outro link</button>
+    </div>
+    <span class="text">Centralize todas as conversas em uma única plataforma!</span>
+  </div>
+  <div id="snackbar">Link copiado!</div>
+  <script>
+    let $form = document.querySelector("#pardot-form");
+    let $options = document.querySelectorAll(".options .option");
+    let $contents = document.querySelectorAll(".zenvia-solutions .content");
+    let $link = document.querySelector(".input-wrapper .link");
+    let $formResult = document.querySelector(".form-result");
+    let $formWrapper = document.querySelector(".form");
+    let $buttonLink = document.querySelector(".button-link");
+    let $buttonRefresh = document.querySelector(".refresh");
+    let phone;
+    let text;
+    let url;
+
+    setTimeout(() => {
+      $formResult.style.height = `${$formWrapper.clientHeight}px`;
+    }, 1000);
+
+    const handlePhone = (event) => {
+      let input = event.target;
+
+      input.value = phoneMask(input.value);
+    }
+
+    const phoneMask = (value) => {
+      return value
+    }
+
+    $options.forEach(option => {
+      option.addEventListener("click", () => {
+        if ($options[0].classList.contains("selected")) {
+          $options[0].classList.remove("selected");
+          $options[1].classList.add("selected");
+
+          $contents[0].classList.remove("selected");
+          $contents[1].classList.add("selected");
+        }
+        else {
+          $options[1].classList.remove("selected");
+          $options[0].classList.add("selected");
+
+          $contents[1].classList.remove("selected");
+          $contents[0].classList.add("selected");
+        }
+      });
+    });
+
+    $form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      $formWrapper.style.display = "none";
+      $formResult.style.display = "flex";
+
+      aName = event.target[0].value;
+      phone = (event.target[1].value).replace(/\D/g, "");
+      email = event.target[2].value;
+      text = event.target[3].value;
+
+      url = `https://api.whatsapp.com/send?phone=55${phone}&text=${text}`;
+
+      $link.setAttribute("value", url);
+      $buttonLink.setAttribute("value", url);
+
+      setTimeout(() => {
+        $form.reset();
+      }, 1000);
+    });
+
+    $buttonLink.addEventListener("click", (event) => {
+      navigator.clipboard.writeText((event.target).getAttribute("value"));
+
+      runSnackbar();
+    });
+
+    $buttonRefresh.addEventListener("click", (event) => {
+      location.reload();
+    });
+
+    function runSnackbar() {
+      var x = document.getElementById("snackbar");
+
+      x.className = "show";
+
+      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
+  </script>
+</body>
+
+</html>
