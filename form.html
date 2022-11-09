@@ -292,7 +292,7 @@
       phone = (event.target[1].value).replace(/\D/g, "");
       text = event.target[3].value;
 
-      url = `https://api.whatsapp.com/send?phone=55${phone}&text=${text}`;
+      url = encodeURI(`https://api.whatsapp.com/send?phone=55${phone}&text=${text}`);
 
       parent.postMessage(url, "*");
     });
