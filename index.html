@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZENVIA | Link para WhatsApp</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+  <link rel="icon" href="https://www.zenvia.com/wp-content/uploads/2021/04/cropped-favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" href="https://www.zenvia.com/wp-content/uploads/2021/04/cropped-favicon-192x192.png"
+    sizes="192x192" />
   <script type="text/javascript" src="https://go.pardot.com/js/piUtils.js?ver=2021-09-20"></script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
@@ -49,6 +51,10 @@
 
     h5 {
       font-size: 1rem;
+    }
+
+    .desktop {
+      display: none;
     }
 
     html {
@@ -102,6 +108,7 @@
     }
 
     html body main section.first .h1-h2-and-form .h1-h2 h1 {
+      position: relative;
       line-height: 2.4rem;
       font-size: 2rem;
       color: #FFFFFF;
@@ -111,6 +118,12 @@
       font-size: 2.15rem;
       font-weight: 800;
       color: #EDC261;
+    }
+
+    html body main section.first .h1-h2-and-form .h1-h2 h1 .send {
+      position: absolute;
+      top: -16%;
+      left: 68%;
     }
 
     html body main section.first .h1-h2-and-form .form-wrapper {
@@ -227,9 +240,7 @@
       flex-direction: column;
       align-items: center;
       margin: 0rem 0rem 2rem 0rem;
-      padding: 1.25rem 1rem 1.25rem 1rem;
       border-radius: 1rem;
-      box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
       background-color: #FFFFFF;
     }
 
@@ -271,6 +282,9 @@
     }
 
     html body main section.first .h1-h2-and-form .form-result .button-wrapper .button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin: 0rem 1rem 0rem 0rem;
       padding: 0.5rem 1rem 0.5rem 1rem;
       background-color: #E0DEE0;
@@ -278,12 +292,21 @@
       color: #2B3356;
     }
 
+    html body main section.first .h1-h2-and-form .form-result .button-wrapper .button span {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    html body main section.first .h1-h2-and-form .form-result .button-wrapper .button img {
+      margin: 0rem 0.5rem 0rem 0rem;
+    }
+
     html body main section.first .h1-h2-and-form .form-result .button-wrapper .button:last-of-type {
       margin: 0rem 0rem 0rem 0rem;
     }
 
     html body main section.first .h1-h2-and-form .form-result .text {
-      padding: 0rem 4rem 0rem 4rem;
+      padding: 0rem 2rem 0rem 2rem;
       font-size: 1.35rem;
       font-weight: 700;
       text-align: center;
@@ -502,6 +525,10 @@
     @media (min-width: 1200px) {
       .mobile {
         display: none;
+      }
+
+      .desktop {
+        display: block;
       }
 
       .button {
@@ -855,10 +882,8 @@
           <h1 class="h1">
             O link do seu <span class="h1-bolder">WhatsApp</span> é o primeiro passo para escalar suas vendas, a <span
               class="h1-bolder">Zenvia é o segundo!</span>
-            <!-- <div class="arrow">
-              <div class="up"></div>
-              <div class="botom"></div>
-            </div> -->
+            <img class="send desktop"
+              src="data:image/png;base64,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">
           </h1>
           <h2 class="h2 desktop">
             Escolha a opção que melhor atende sua necessidade:
@@ -867,6 +892,26 @@
         <div class="form-wrapper">
           <span class="title">Gerador do Código</span>
           <iframe src="./form.html" frameborder="0" scrolling="no"></iframe>
+          <div class="form-result">
+            <div class="input-wrapper">
+              <label class="field-label" for="link">Link gerado</label>
+              <input class="link" type="text" name="link">
+            </div>
+            <div class="button-wrapper">
+              <button class="button button-link" target="_blank">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFeSURBVHgB7VWxTsMwEL0LDIxhQAgm2KDpgAIDn8EUGOEPwtYtycgE/YOyleQnYCcRA67Y6AQSDHSvymEnVEqt2E5FUJe+IbbsZ7/zO+cM8M9AE6HleoGF4BOAXTE9BKKIZUlPtX4FNHBc7xoROry7pqDYgHiyseXA5zt7qCJoT+Acel9ik8nE2n156g/l+faRFxJBIPq8DQdZHMkcC/TIbanaXOD5MQ6B8DKPFCEUds4rYATL7m6ArIupyL576msFRBRtbg23h6C2SL83FbGQAqXAb1JDxY0xixSwlQI85eeiEUllaWy8wnUgW6RNahMCjWMpsBSAkfgcHJ/tGHhlzqg8vqpbxP/qrqiW4/H3Ky8dOipwTt4S0G15XHsCUS0RqItSVJXBcA4PKBqkia8kiQI3T5Grw5dP8GfPZczkoAnPZcy8yR9v7H5zu7WOgHugfoeLYArPr1iadGCR+AEXnoB36HnJ8AAAAABJRU5ErkJggg==">
+                <span>Copiar link</span>
+              </button>
+              <button class="button refresh" target="_blank">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJxSURBVHgB7ZUxb9NQEMfvnAYhJCRLSFSiA2GrmiCZBCS2pp+gztIEFtpP0I5sJJ+A5hMkEyrp0HSDqWZDakKNGgc2whJQuwTUAWL7Hfdiu0qaNiRNl0r+Lb5n33v3f/fungFCQkJCrgEIl0RL66pzclMDEGkivH+6INJ3JDAjt7uGaVQ746w1sQgZvPv7xrqCsEEA6mhvLEejWDA/brVGesEEJFLZdQDKB8ER0RAkPkcoYgKKDpCikiJi/GWRiNLBPCLINz9VClOLiCezJUBa9SZhlRUUG7Ut4yL/eS0Xi0REns0Xfigj6v7NmObwEY0lIp5cec2eG+zccQHWvtQrVRiT+JPnGgh3h/MR46Fp1SuPzvpE/rdIIrnyigW8lALInVlqHly8+/M4bh/+vDP7cFdRQOfh/N25hHrctt73+4zMhPY0F7Nt8U3aAiAzSQbO4mXE2WNTRVSW+o9SCYItpLI7C3LXfdg2+WMsTyNAYu2/MRGhKG0u2oE4PRG266oIpLNTPvE4lw6EsfuqtF0XC3AFzDjdTX5wYVI6iHMqwtrfNlmEr1KUesfgkO65YPmr6fW5bNF4KrvnCZwc2RlBNgS5+oAISaO+zdWPBptcB1TiW2/Zc6BdGVQGJ6BNuQvXFhpcEkLqHSvHWh4SIXFcXAM/XRww7SmGRccWB/Kd7BBZoIdT1IfMuhcDYpqmq0MiZNq5cjMDs/zrmUUVT9zug2kL1FsSWvJpR2/FhkRIZOsE9eHPMGVLNfm4WuZ4P6QxZPTWQRK9TJx7WR39aL6bnYvzrwE+WLXKs6N2owVXyOy9+C9S8I9Ve1uEkJCQkOvCPz0OCoHoxielAAAAAElFTkSuQmCC">
+                <span>Gerar outro link</span>
+              </button>
+            </div>
+            <span class="text">Centralize todas as conversas em uma única plataforma!</span>
+          </div>
+          <div id="snackbar">Link copiado!</div>
         </div>
         <h2 class="h2 mobile">
           Escolha a opção que melhor atende sua necessidade:
@@ -985,19 +1030,17 @@
     let $contents = document.querySelectorAll(".zenvia-solutions .content");
     let $link = document.querySelector(".input-wrapper .link");
     let $formWrapper = document.querySelector(".form-wrapper");
+    let $formResult = document.querySelector(".form-result");
+    let $formIframe = document.querySelector("iframe");
+    let $buttonLink = document.querySelector(".button-link");
+    let $buttonRefresh = document.querySelector(".refresh");
     let phone;
     let text;
     let url;
 
-    const handlePhone = (event) => {
-      let input = event.target;
-
-      input.value = phoneMask(input.value);
-    }
-
-    const phoneMask = (value) => {
-      return value
-    }
+    setTimeout(() => {
+      $formResult.style.height = `${$formIframe.clientHeight}px`;
+    }, 1000);
 
     $options.forEach(option => {
       option.addEventListener("click", () => {
@@ -1017,6 +1060,32 @@
         }
       });
     });
+
+    $buttonLink.addEventListener("click", (event) => {
+      navigator.clipboard.writeText($buttonLink.getAttribute("value"));
+
+      runSnackbar();
+    });
+
+    $buttonRefresh.addEventListener("click", (event) => {
+      location.reload();
+    });
+
+    function runSnackbar() {
+      var x = document.getElementById("snackbar");
+
+      x.className = "show";
+
+      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
+
+    window.addEventListener("message", (event) => {
+      $formIframe.style.display = "none";
+      $formResult.style.display = "flex";
+
+      $link.setAttribute("value", event.data);
+      $buttonLink.setAttribute("value", event.data);
+    }, false);
   </script>
 </body>
 

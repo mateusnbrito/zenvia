@@ -32,8 +32,9 @@
     }
 
     .form {
-      width: 100%;
       display: flex;
+      /* display: none; */
+      width: 100%;
       flex-direction: column;
       align-items: flex-start;
     }
@@ -110,12 +111,12 @@
 
     .form-result {
       display: none;
+      /* display: flex; */
       flex-direction: column;
       align-items: center;
       margin: 0rem 0rem 2rem 0rem;
       padding: 1.25rem 1rem 1.25rem 1rem;
       border-radius: 1rem;
-      box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
       background-color: #FFFFFF;
     }
 
@@ -157,11 +158,21 @@
     }
 
     .form-result .button-wrapper .button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin: 0rem 1rem 0rem 0rem;
       padding: 0.5rem 1rem 0.5rem 1rem;
       background-color: #E0DEE0;
       cursor: pointer;
-      color: #2B3356;
+    }
+
+    .form-result .button-wrapper .button img {
+      margin: 0rem 0.5rem 0rem 0rem;
+    }
+
+    .form-result .button-wrapper .button span {
+      font-weight: 700;
     }
 
     .form-result .button-wrapper .button:last-of-type {
@@ -169,97 +180,10 @@
     }
 
     .form-result .text {
-      padding: 0rem 4rem 0rem 4rem;
+      padding: 0rem 2rem 0rem 2rem;
       font-size: 1.35rem;
       font-weight: 700;
       text-align: center;
-    }
-
-    /* The snackbar - position it at the bottom and in the middle of the screen */
-    #snackbar {
-      visibility: hidden;
-      /* Hidden by default. Visible on click */
-      min-width: 250px;
-      /* Set a default minimum width */
-      margin-left: -125px;
-      /* Divide value of min-width by 2 */
-      background-color: #333;
-      /* Black background color */
-      color: #fff;
-      /* White text color */
-      text-align: center;
-      /* Centered text */
-      border-radius: 2px;
-      /* Rounded borders */
-      padding: 16px;
-      /* Padding */
-      position: fixed;
-      /* Sit on top of the screen */
-      z-index: 1;
-      /* Add a z-index if needed */
-      left: 50%;
-      /* Center the snackbar */
-      bottom: 30px;
-      /* 30px from the bottom */
-    }
-
-    /* Show the snackbar when clicking on a button (class added with JavaScript) */
-    #snackbar.show {
-      visibility: visible;
-      /* Show the snackbar */
-      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-  However, delay the fade out process for 2.5 seconds */
-      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-      animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-
-    /* Animations to fade the snackbar in and out */
-    @-webkit-keyframes fadein {
-      from {
-        bottom: 0;
-        opacity: 0;
-      }
-
-      to {
-        bottom: 30px;
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadein {
-      from {
-        bottom: 0;
-        opacity: 0;
-      }
-
-      to {
-        bottom: 30px;
-        opacity: 1;
-      }
-    }
-
-    @-webkit-keyframes fadeout {
-      from {
-        bottom: 30px;
-        opacity: 1;
-      }
-
-      to {
-        bottom: 0;
-        opacity: 0;
-      }
-    }
-
-    @keyframes fadeout {
-      from {
-        bottom: 30px;
-        opacity: 1;
-      }
-
-      to {
-        bottom: 0;
-        opacity: 0;
-      }
     }
   </style>
 </head>
@@ -282,8 +206,8 @@
         <div name="phone" id="843713_244119pi_843713_244119" class="form-field phone pd-text required">
           <label class="field-label" for="843713_244119pi_843713_244119">Qual o seu número de WhatsApp?</label>
           <input type="tel" name="843713_244119pi_843713_244119" id="843713_244119pi_843713_244119 number" value=""
-            class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Seu número"
-            onkeyup="handlePhone(event)" inputmode="numeric" required />
+            class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Seu número" inputmode="numeric"
+            required />
           <span class="description">Ex: 551190000000</span>
           <div id="error_for_843713_244119pi_843713_244119" style="display:none"></div>
         </div>
@@ -334,44 +258,16 @@
       </div>
     </div>
   </form>
-  <div class="form-result">
-    <div class="input-wrapper">
-      <label class="field-label" for="link">Link gerado</label>
-      <input class="link" type="text" name="link">
-    </div>
-    <div class="button-wrapper">
-      <button class="button button-link" target="_blank">Copiar link</button>
-      <button class="button refresh" target="_blank">Gerar outro link</button>
-    </div>
-    <span class="text">Centralize todas as conversas em uma única plataforma!</span>
-  </div>
-  <div id="snackbar">Link copiado!</div>
   <script>
     let $form = document.querySelector("#pardot-form");
     let $options = document.querySelectorAll(".options .option");
     let $contents = document.querySelectorAll(".zenvia-solutions .content");
     let $link = document.querySelector(".input-wrapper .link");
-    let $formResult = document.querySelector(".form-result");
     let $formWrapper = document.querySelector(".form");
-    let $buttonLink = document.querySelector(".button-link");
-    let $buttonRefresh = document.querySelector(".refresh");
+    let $formResult = document.querySelector(".form-result");
     let phone;
     let text;
     let url;
-
-    setTimeout(() => {
-      $formResult.style.height = `${$formWrapper.clientHeight}px`;
-    }, 1000);
-
-    const handlePhone = (event) => {
-      let input = event.target;
-
-      input.value = phoneMask(input.value);
-    }
-
-    const phoneMask = (value) => {
-      return value
-    }
 
     $options.forEach(option => {
       option.addEventListener("click", () => {
@@ -393,43 +289,13 @@
     });
 
     $form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      $formWrapper.style.display = "none";
-      $formResult.style.display = "flex";
-
-      aName = event.target[0].value;
       phone = (event.target[1].value).replace(/\D/g, "");
-      email = event.target[2].value;
       text = event.target[3].value;
 
       url = `https://api.whatsapp.com/send?phone=55${phone}&text=${text}`;
 
-      $link.setAttribute("value", url);
-      $buttonLink.setAttribute("value", url);
-
-      setTimeout(() => {
-        $form.reset();
-      }, 1000);
+      parent.postMessage(url, "*");
     });
-
-    $buttonLink.addEventListener("click", (event) => {
-      navigator.clipboard.writeText((event.target).getAttribute("value"));
-
-      runSnackbar();
-    });
-
-    $buttonRefresh.addEventListener("click", (event) => {
-      location.reload();
-    });
-
-    function runSnackbar() {
-      var x = document.getElementById("snackbar");
-
-      x.className = "show";
-
-      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-    }
   </script>
 </body>
 
