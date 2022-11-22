@@ -45,7 +45,7 @@
 
     .form .item .item-inner {
       width: 100%;
-      margin: 0rem 0rem 0.5rem 0rem;
+      margin: 0rem 0rem 0.4rem 0rem;
     }
 
     .form .item .item-inner .form-field {
@@ -69,7 +69,7 @@
 
     .form .item .item-inner .form-field input {
       width: 100%;
-      height: 2.5rem;
+      height: 2.3rem;
       padding: 0.5rem 0.75rem 0.5rem 0.75rem;
       border: 0.1rem solid #DAD9D9;
       border-radius: 0.25rem;
@@ -99,8 +99,13 @@
 
     .form .value label {
       margin: 0rem 0rem 0rem 0rem !important;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 500 !important;
+      line-height: 0.9rem;
+    }
+
+    .form .value label a {
+      font-size: 0.77rem !important;
     }
 
     .form .value input {
@@ -239,8 +244,9 @@
               <span class="value">
                 <input type="checkbox" name="843713_244242pi_843713_244242_1978971"
                   id="843713_244242pi_843713_244242_1978971" value="1978971" onchange="" required />
-                <label class="inline" for="843713_244242pi_843713_244242_1978971">Aceito receber contato
-                  Zenvia</label>
+                <label class="inline" for="843713_244242pi_843713_244242_1978971">Ao gerar o link você concorda com os
+                  termos e condições de nossa na <a href="https://www.zenvia.com/politica-de-privacidade/"
+                    target="_blank" style="font-weight: 900;">Política de Privacidade</a></label>
               </span>
               <div id="error_for_843713_244242pi_843713_244242" style="display:none"></div>
             </div>
@@ -289,6 +295,8 @@
     });
 
     $form.addEventListener("submit", (event) => {
+      // event.preventDefault();
+
       phone = (event.target[1].value).replace(/\D/g, "");
       text = event.target[3].value;
 
